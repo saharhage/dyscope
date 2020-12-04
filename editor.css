@@ -1,0 +1,180 @@
+@font-face {
+    font-family: "BD Cartoon Shout";
+    src: 
+    url("fonts/BD_Cartoon_Shout.woff") format("woff"),
+    url("fonts/BD_Cartoon_Shout.ttf") format("truetype");
+}
+
+body{
+    margin: 0px;
+    padding: 0px;
+    background-image: url("images/b8.png");
+    background-size: cover;
+    background-attachment: fixed;
+    position: sticky;
+
+
+}
+
+.edit{
+    margin: 0 auto ;
+    margin-top: 0px;
+    padding: 0px;
+ 
+}
+
+.editor1{
+    border:0.1em solid #243048;
+    height:53vh;
+    max-height:53vh;
+    padding:1em;
+    overflow:auto;
+    font-size:30px;
+    margin-top: 1%;
+    outline:none;
+    background-color: #fdfdfd;
+
+}
+
+#dy{
+    background: url('images/dy.png');
+    background-size: cover;
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+#sco{
+    background: url('images/sco.png');
+    background-size: cover;
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+#pe{
+    background: url('images/pe.png');
+    background-size: cover;
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+.dyscope{
+    margin-top: 5vh;
+    margin-bottom: 0px;
+    text-align: center;
+    letter-spacing: 1vw;
+    font-size: 2.5vw;
+    text-transform: uppercase;
+    font-family: "BD Cartoon Shout", arial; 
+    color: transparent;
+    text-align: center; 
+    padding:0%;
+    z-index: 0;
+}
+
+.dyscope span{
+    margin-left: -40px;
+}
+
+.buttons{
+    width:70%;
+    margin-left:15%;
+    margin-right:25%;
+    margin-top: 0px;
+    color: black;
+    border: 2px solid #555555;
+
+}
+
+.fa-lg{
+    line-height: 1.4em;
+}
+
+.buttons button:hover {
+
+    background-size:cover;
+    background-color: #555555;
+    width:100%;
+}
+
+.table td{
+    text-align:center;
+}
+
+.dys-buttons button{
+    display: block;
+    text-align: center;
+    color: gray;
+    text-decoration: solid ;
+    font-family: Didot, serif;
+    border-radius: 2vw;
+    border: none;
+    width: 15vw;
+    font-size: 1.5vw;
+    margin-bottom: 5%;
+    align-content: center;
+}
+
+.dys-buttons{
+    transform:translateY(2em);
+}
+
+
+.buttons button{
+    border: none;
+    background: none;
+}
+
+table {
+    border:none !important;
+}
+
+.color{
+    margin-left:-2%;
+    border: none;
+}
+
+.select-css{
+    font-size:100%;
+}
+
+select {
+    background: lightgray;
+    color: gray;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+}
+
+select option {
+    background: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+}
+
+.direction-ltr{
+    direction:ltr;
+}
+
+.direction-rtl{
+    direction:rtl;
+}
+
+.eng{
+    background-color: #f8e6cc;
+}
+
+.fr{
+    background-color: #c5e8e9;
+}
+
+.ar{
+    background-color: #d2cfe3;
+}
+
+.sel{
+    font-size: 1.3em;
+    text-transform: bold;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#colorbutton{
+    font-size: 1.7em;
+}

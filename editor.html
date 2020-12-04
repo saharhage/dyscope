@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://allfont.net/allfont.css?fonts=bd-cartoon-shout" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="editor.css">
+
+    <title>
+      Dyscope
+    </title>
+   
+    <style type="text/css" media="print" >
+  		body{
+        visibility: hidden;
+  	  }
+   	  .editor1{
+        visibility: visible;
+        border: none !important; 
+        top:0.1em;
+        left: 0.5em;
+        right: 0.5em;
+        position: fixed;
+        overflow: visible;
+        z-index: 100000000;
+        display: block;
+        width: auto;
+        height: auto;
+      }
+    .editor1::-webkit-scrollbar { width: 0 !important;}
+    .editor1 { -ms-overflow-style: none; }
+    .editor1 { overflow: -moz-scrollbars-none; }
+
+    @page { size: auto;  margin: 0; }
+    </style>
+  </head>
+  
+
+  <body onclick="clicking()" onload="onloadevents()">
+    <div class="container-fluid"> 
+      <div class="row">
+        <div class="dyscope col-6 offset-3">
+          <h1>
+            <span id="dy">Dy</span>
+            <span id="sco">sco</span>
+            <span id="pe">pe</span>
+          </h1>
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="edit col-8 offset-3">
+        <table class="buttons table" style="font-size: 0.7rem">
+          <tr>
+            <td><button class= "fa fa-undo fa-lg"	onclick="doFormat('undo')"></button></td>
+            <td> <button class= "fa fa-redo fa-lg"  onclick= "doFormat('redo')"></button></td>
+            <td> <button class="sel" onclick="doFormat('selectall')">Select</button> </td>
+            <td> <button class="sel" onclick="deselecttext()">Deselect</button> </td>
+
+            <td colspan="2">           
+              <select class="select-css" id="fontname" value="Font Name" onchange="changefontname('fontname');">
+                <option value="Arial">Arial</option>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Courier">Courier</option>
+              </select>
+            </td>
+          
+            <td> 
+              <select class="select-css" id="fontsize" onchange="changefontsize('fontsize');">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3"selected>3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+              </select>
+            </td>
+
+            <td> <button class="fa fa-print fa-lg" onclick="printtext()"></button></td>
+        
+            <!--
+            <td colspan="2"> 
+              <select class="select-css" id="hbut" onchange="changefontheading('heading');">
+                <option value="H1" style=" display: block; font-size: 2em; margin-top: 0.67em; margin-bottom: 0.67em; margin-left: 0; margin-right: 0; font-weight: bold;">Heading 1</option>
+                <option value="H2"style="display: block; font-size: 1.5em; margin-top: 0.83em; margin-bottom: 0.83em; margin-left: 0; margin-right: 0; font-weight: bold;">Heading 2</option>
+                <option value="H3"style="display: block; font-size: 1.17em; margin-top: 1em; margin-bottom: 1em; margin-left: 0; margin-right: 0; font-weight: bold;">Heading 3</option>
+                <option value="H4"style="display: block; font-size: 1em; margin-top: 1.33em; margin-bottom: 1.33em; margin-left: 0; margin-right: 0; font-weight: bold;">Heading 4</option>
+                <option value="H5"style="display: block; font-size: .83em; margin-top: 1.67em; margin-bottom: 1.67em; margin-left: 0; margin-right: 0; font-weight: bold;">Heading 5</option>
+                <option value="H6"style="display: block; font-size: .67em; margin-top: 2.33em; margin-bottom: 2.33em; margin-left: 0; margin-right: 0; font-weight: bold;">Heading 6</option>
+              </select>
+            </td>-->
+          </tr>
+
+          <tr>
+            <td> 
+              <input class="color" type="color" id="colorpicker" name="colorpicker"> 
+            </td>
+            <td> <button id="colorbutton"	onclick="ChangeTcolor('forecolor');" style="margin-right:-4;font-weight:bold;">C</button> </td>
+            <td> <button class= "fa fa-image fa-lg" onclick="insertimages('insertimage')" ></button> </td>
+            <!-- <td> <button onclick="exporttext()" class="fas fa-file-export chosen fa-lg"></button> </td> -->
+            <td> <button class= "fa fa-subscript chosen-sub fa-lg"	id="subbut"	onclick="doFormat('subscript')" ></button> </td>
+            <td> <button class= "fa fa-superscript chosen-sup fa-lg"	id="supbut"	onclick="doFormat('superscript')" ></button> </td>
+            <td> <button class= "fa fa-list chosen-ul fa-lg"	id="ulbut" onclick="doFormat('insertUnorderedList')" ></button> </td>
+            <td> <button class= "fa fa-list-ol chosen-li fa-lg" id="libut" onclick="doFormat('insertOrderedList')" ></button> </td>
+            <td> <button onclick="changedirection()" id="direction" class="fas fa-map-signs fa-lg"></button> </td>
+          </tr>
+
+          <tr>
+            <td> <button class="fa fa-bold chosen-b fa-lg" id="bbut"	onclick="doFormat('bold');"></button> </td>
+            <td> <button class="fa fa-italic chosen-em fa-lg" id="embut"	onclick="doFormat('italic');"></button> </td>
+            <td> <button class="fa fa-underline chosen-u fa-lg" 	id="ubut"	onclick="doFormat('underline');"></button> </td>
+            <td> <button class="fa fa-strikethrough chosen-strike fa-lg" id="strikebut" onclick="doFormat('strikethrough');"></button> </td>
+            <td> <button class="fa fa-align-left chosen-justifyl fa-lg"  id="justifylbut"    onclick="doFormat('justifyleft');"></button> </td>
+            <td> <button class ="fa fa-align-center chosen-justifyc fa-lg"  id="justifycbut" onclick="doFormat('justifycenter');"></button> </td>
+            <td> <button class="fa fa-align-right chosen-justifyr fa-lg"   id="justifyrbut"  onclick="doFormat('justifyright');"></button> </td>
+            <td> <button class="fa fa-align-justify chosen-justify fa-lg" id="justifybut"  onclick="doFormat('justifyfull');"></button> </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-8 offset-2">
+        <div id="editor1" class="editor1 direction-ltr" contenteditable="true"></div >
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="offset-3 col-2 dys-buttons">
+        <button class="eng" onclick="dyslexiaEnglish()">Dyslexia English</button>
+      </div>
+
+      <div class="  col-2 dys-buttons">
+        <button class="fr" onclick="dyslexiaFrench()">Dyslexia Français</button>
+      </div>
+
+      <div class="  col-2 dys-buttons">
+          <button class="ar" onclick="dyslexiaArabic()">Dyslexia باللغة العربية  </button>
+      </div>
+      
+    </div>
+  </body>
+
+  <script language="javascript">
+    var colorpicked;
+    var fontsizevalue;
+
+    function clicking(){
+      var state;
+      state = document.queryCommandState("subscript");
+      switch (state) {
+        case true:
+          document.getElementById("subbut").style.backgroundColor = "#adadad";
+          break;
+        case false:
+          document.getElementById("subbut").style.backgroundColor = "#fafafa";
+          break;
+      }
+      
+      state = document.queryCommandState("superscript");
+      switch (state) {
+        case true:
+          document.getElementById("supbut").style.backgroundColor = "#adadad";
+          break;
+        case false:
+          document.getElementById("supbut").style.backgroundColor = "#fafafa";
+          break;
+      }
+      
+      state = document.queryCommandState("insertUnorderedList");
+      switch (state) {
+        case true:
+          document.getElementById("ulbut").style.backgroundColor = "#adadad";
+          break;
+        case false:
+          document.getElementById("ulbut").style.backgroundColor = "#fafafa";
+          break;
+      }
+      
+      state = document.queryCommandState("insertOrderedList");
+      switch (state) {
+        case true:
+          document.getElementById("libut").style.backgroundColor = "#adadad";
+          break;
+        case false:
+          document.getElementById("libut").style.backgroundColor = "#fafafa";
+          break;
+      }
+      
+      state = document.queryCommandState("bold");
+      switch (state) {
+        case true:
+          document.getElementById("bbut").style.backgroundColor = "#adadad";
+          break;
+        case false:
+          document.getElementById("bbut").style.backgroundColor = "#fafafa";
+          break;
+      }
+      
+      state = document.queryCommandState("italic");
+      switch (state) {
+        case true:
+          document.getElementById("embut").style.backgroundColor = "#adadad";
+          break;
+        case false:
+          document.getElementById("embut").style.backgroundColor = "#fafafa";
+          break;
+      }
+      
+      state = document.queryCommandState("underline");
+      switch (state) {
+        case true:
+          document.getElementById("ubut").style.backgroundColor = "#adadad";
+          break;
+        case false:
+          document.getElementById("ubut").style.backgroundColor = "#fafafa";
+          break;
+      }
+      
+      state = document.queryCommandState("strikethrough");
+      switch (state) {
+        case true:
+          document.getElementById("strikebut").style.backgroundColor = "#adadad";
+          break;
+        case false:
+          document.getElementById("strikebut").style.backgroundColor = "#fafafa";
+          break;
+      }
+      
+      /*state = document.queryCommandState("heading");
+      switch (state) {
+        case true:
+          document.getElementById("hbut").style.backgroundColor = "#adadad";
+          break;
+        case false:
+          document.getElementById("hbut").style.backgroundColor = "#f2f2f2";
+          break;
+      }*/
+      
+      state = document.queryCommandState("justifyleft");
+      switch (state) {
+        case true:
+          document.getElementById("justifylbut").style.backgroundColor = "#adadad";
+          break;
+        case false:
+          document.getElementById("justifylbut").style.backgroundColor = "#fafafa";
+          break;
+      }
+      
+      state = document.queryCommandState("justifycenter");
+      switch (state) {
+        case true:
+          document.getElementById("justifycbut").style.backgroundColor = "#adadad";
+          
+          break;
+        case false:
+          document.getElementById("justifycbut").style.backgroundColor = "#fafafa";
+          break;
+      }
+      
+      state = document.queryCommandState("justifyright");
+      switch (state) {
+        case true:
+          document.getElementById("justifyrbut").style.backgroundColor = "#adadad";
+          break;
+        case false:
+          document.getElementById("justifyrbut").style.backgroundColor = "#fafafa";
+          break;
+      }
+      
+      state = document.queryCommandState("justifyfull");
+      switch (state) {
+        case true:
+          document.getElementById("justifybut").style.backgroundColor = "#adadad";
+          break;
+        case false:
+          document.getElementById("justifybut").style.backgroundColor = "#fafafa";
+          break;
+      }
+      
+    }
+
+    function dyslexiaEnglish(){
+      var counter = 0;
+      const regex = /[^aeuioy(".,)!\- ]*[aeuioy]+[^aeuioy(".,)!\- ]*(?![aeuioy])/gmi;
+      const str = document.getElementById("editor1").innerText;
+      var txt = document.getElementById("editor1").innerText.replace(regex, replacement);
+      document.getElementById("editor1").innerHTML = txt;
+      
+      function replacement(match) {
+        counter = counter + 1;
+        if (counter % 2 == 0){
+          return match.fontcolor("red");
+        }
+        else {
+          return match.fontcolor("black");
+        }
+      }
+    }
+
+    function dyslexiaArabic(){
+      var counter = 0;
+      const regex = /(\u0644\u0652)|(\u0627\u0644)(?!\u0652)|([^\u064B\u064C\u064D\u064E\u064F\u0650(".,)!\- ]\u0651?([\u064B\u064C\u064D\u064E\u064F\u0650\u0627\u0649]|[\u0648\u064A](?![\u064B\u064C\u064D\u064E\u064F\u0650]))\u0627?([^\u064B\u064C\u064D\u064E\u064F\u0650(".,)!\- ]\u0651?\u0652)*)/g;
+      const regex2 = /[\u0624\u0627\u062F\u0632\u0631\u0630\u0648. ][\u064B\u064C\u064D\u064E\u064F\u0650\u0627\u0649\u0648]*/g;
+      const regex3 = /[\u0621\.\ ]/g;
+      const regex5 = /[^\u064B\u064C\u064D\u064E\u064F\u0650(".,)!\- ]\u0651?\u0648\u0627/g;
+      const regex6 = /\u0627/g;
+      var txt = document.getElementById("editor1").innerText.fontcolor("grey");
+        txt = txt.replace(/\u200D/g, "");
+        txt = txt.replace(regex, replacement);
+        document.getElementById("editor1").innerHTML = txt;
+
+      
+      function replacement(match, p1, p2, p3, p4, p5, offset, string) {
+        var m = match;
+
+        if (offset > 19 && string.substr(offset-2, 2).match(regex2) == null){
+          m = "&#8205" + m;
+        }
+        if (offset + match.length < string.length - 7 && string.substr(offset + match.length, 1).match(regex3) == null){
+          m = m + "&#8205";
+        }
+        if (match == "ال"){
+           return m;
+        }
+        else{
+          if (match.match(regex5)!= null){
+            m = m.replace(regex6, "ا".fontcolor("grey"));
+          }
+          counter = counter + 1;
+          if (counter % 2 == 0){
+            return m.fontcolor("red");
+          }
+          else {
+            return m.fontcolor("black");
+          }
+        }
+      }
+    }
+    
+    function dyslexiaFrench(){
+      var counter = 0;
+      const regex = /[^éàèùâêîôûëïüaeuioy(".,)!\- ]*[éàèùâêîôûëïüaeuioy]+[^éàèùâêîôûëïüaeuioy(".,)!\- ]*(?![éàèùâêîôûëïüaeuioy])/gmi;
+      const str = document.getElementById("editor1").innerText;
+      
+      var txt = document.getElementById("editor1").innerText.replace(regex, replacement);
+      document.getElementById("editor1").innerHTML = txt;
+      function replacement(match) {
+        counter = counter + 1;
+        if (counter % 2 == 0){
+          return match.fontcolor("red");
+        }
+        else {
+          return match.fontcolor("black"); 
+        }
+      }
+    }
+
+    function onloadevents(){
+      document.getElementById("colorpicker").addEventListener("focusout", changecolor);
+      document.getElementById("fontsize").addEventListener("focusout", changefontsize('fontsize'));
+    }
+
+    function doFormat(cmd) {
+      document.execCommand(cmd, null, null);
+      refocus();
+    }
+
+    function ChangeTcolor(cmd) {
+      document.execCommand(cmd, null, colorpicked);
+      refocus();
+    }
+
+    /*function doFormatH1(cmd) {
+      document.execCommand(cmd, null, "H1");
+      refocus();
+    }*/
+
+    function deselecttext(){
+      if (window.getSelection) {window.getSelection().removeAllRanges();}
+      else if (document.selection) {document.selection.empty();}
+      refocus();
+    }
+
+    function changecolor(){
+      colorpicked = document.getElementById("colorpicker").value;
+      document.getElementById("colorbutton").style.color = colorpicked;
+      ChangeTcolor('forecolor');
+      refocus();
+    }
+  
+    /*function exporttext(){
+      console.log(document.getElementById("editor1").innerText);
+    }*/
+    
+    function printtext(){
+      window.print();
+    }
+
+    function refocus(){
+      document.getElementById("editor1").focus();
+    }
+
+    function insertimages(cmd){
+      var imagelink = window.prompt("Image link: ");
+      document.execCommand(cmd, null,imagelink);
+       refocus();
+    }
+
+    function changefontsize(cmd){
+      fontsizevalue = document.getElementById("fontsize").value;
+      document.execCommand(cmd,null,fontsizevalue);
+      refocus();
+    }
+
+    function changefontname(cmd){
+      fontname = document.getElementById("fontname").value;
+      document.execCommand(cmd,null,fontname);
+      refocus();
+    }    
+    
+    /*function changefontheading(cmd) {
+      fontfor= document.getElementById("hbut").value;
+      document.execCommand(cmd, null, fontfor);
+      refocus();
+    }*/
+
+    function changedirection(){
+      var element = document.getElementById("editor1");
+      
+      if (element.classList.contains("direction-ltr"))
+        {
+        element.classList.remove('direction-ltr');
+        element.classList.add('direction-rtl');
+        element.setAttribute("lang", "ar");
+        }
+      else
+        {
+        element.classList.remove('direction-rtl');
+        element.classList.add('direction-ltr');
+        element.removeAttribute("lang");
+        }
+    } 
+  </script>
+</html>

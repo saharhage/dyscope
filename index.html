@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Dyscope</title>
+        <link href="https://allfont.net/allfont.css?fonts=bd-cartoon-shout" rel="stylesheet" type="text/css" />
+
+        <style>
+            @font-face {
+                font-family: "BD Cartoon Shout";
+                src: 
+                url("fonts/BD_Cartoon_Shout.woff") format("woff"),
+                url("fonts/BD_Cartoon_Shout.ttf") format("truetype");
+            }
+
+            img.bg {
+                height:100%;
+                width: 100%;
+                position: fixed;
+                top: 0;
+                left: 0;
+                user-select: none;
+            }
+            
+            h1{
+                text-transform: uppercase;
+                background: linear-gradient(to right, #BD189A 0%, #ec6436 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                font-size: 7vw;
+                font-family: 'BD Cartoon Shout';                
+                position: absolute;
+                margin-top: 30vh;
+                margin-left:6vw;
+            }
+
+            p{
+                position: absolute;
+                width: 32vw;
+                text-align: center;
+                margin-top: 45vh;
+                margin-left:9.5vw;
+                font-size: 1.5vw;
+                color: #708090;
+                font-family: cursive;
+            }
+            #butt{
+                position: absolute;
+                width: 18vw;
+                text-align: center;
+                margin-top: 65vh;
+                margin-left:17vw;
+                font-size: 1.5vw;
+                background: linear-gradient(to right,#ec6436 0%, #BD189A 100%);
+                color: white;
+                font-family: cursive;
+                border-radius: 2vw;
+            }
+        </style>
+        
+    </head>
+    <body>
+        <img src="images/background.png" alt="background" class="bg" unselectable="on" draggable="false">
+        <div id="logo">
+            <h1>dyscope</h1>
+            <p>Easy Dyslexia tool, that helps with spelling and literacy by 
+                color changing fonts in English, French and Arabic</p>
+            <button id="butt">Go to Editor</button>
+            <form action="editor.html">
+                <button type="submit" id="butt">Go to Editor</button>
+            </form>
+        </div>
+    </body>
+</html>
